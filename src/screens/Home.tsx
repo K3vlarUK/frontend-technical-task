@@ -1,15 +1,24 @@
-import { StyleSheet } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import DogBox from '../components/dogs/DogBox'
 import ActionButtonContainer from '../components/buttons/ActionButtonContainer'
 import { Dog } from '../context/types'
 import { DogContext } from '../context/DogContext'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import styled, { css } from '@emotion/native'
 
 interface DogResponse {
   message: string;
   status: string
 }
+
+// I've used a mixture of Emotion Styling and standard Stylesheets throughout the app
+// I had never used Emotion before so was interested in seeing what it was like
+
+const CustomSafeAreaView = styled.SafeAreaView`
+  justifyContent: space-evenly;
+  alignItems: center;
+  height: 100%;
+  backgroundColor: #5d5d5d;
+`
 
 const Home = () => {
 
@@ -35,30 +44,21 @@ const Home = () => {
     getNewDog();
   }, [])
 
-  const saveDog = () => {
-    addDog(currentDog);
+  const saveDog = (dogsName: string) => {
+    addDog(currentDog, dogsName);
     getNewDog();
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <CustomSafeAreaView>
       {
         currentDog.url && (
           <DogBox url={currentDog.url} dogName={currentDog.name} />
         )
       }
       <ActionButtonContainer newDog={getNewDog} saveDog={saveDog} />
-    </SafeAreaView>
+    </CustomSafeAreaView>
   )
 }
 
 export default Home
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 25,
-    alignItems: 'center',
-    height: '100%',
-    backgroundColor: '#5d5d5d'
-  }
-})

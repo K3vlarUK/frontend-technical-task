@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 import React from 'react'
 
 interface ActionButtonProps {
@@ -20,8 +20,10 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#000',
         borderRadius: 10,
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 40,
         marginTop: 10,
+        alignSelf: 'center'
     },
     text: {
         color: '#F5F5DC',

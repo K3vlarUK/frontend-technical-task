@@ -3,8 +3,18 @@ export type Dog = {
     name: string
 }
 
+export type SavedDog = {
+    dogDetails: Dog,
+    dogsName: string,
+}
+
+export interface SavedDogs {
+    dogsName: string,
+    dogDetails: Dog,
+}
+
 export interface DogContextProps {
-    dogs: Dog[],
-    addDog: (dog: Dog) => void,
+    dogs: SavedDogs[],
+    addDog: (dog: Dog, dogsName: string) => void,
     removeDog: (dogToRemove: Dog) => void,
 }

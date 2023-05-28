@@ -1,9 +1,9 @@
 import React, { createContext, useState} from "react";
-import { Dog, DogContextProps } from "./types";
+import { Dog, DogContextProps, SavedDogs } from "./types";
 
 const initialState: DogContextProps = {
     dogs: [],
-    addDog: (dog: Dog) => {},
+    addDog: (dog: Dog, dogsName: string) => {},
     removeDog: (dogToRemove: Dog) => {}
 };
 
@@ -14,15 +14,15 @@ export interface DogProviderProps {
 }
 
 export const DogContextProvider = (children: DogProviderProps) => {
-    const [dogs, setDogs] = useState<Dog[]>([]);
+    const [dogs, setDogs] = useState<SavedDogs[]>([]);
 
-    const addDog = (dogToAdd: Dog) => {
-        setDogs(initialArray => [...initialArray, dogToAdd])
+    const addDog = (dogToAdd: Dog, dogName: string) => {
+        setDogs(initialArray => [...initialArray, {dogDetails: dogToAdd, dogsName: dogName}])
         console.log({dogs})
     }
 
     const removeDog = (dogToRemove: Dog) => {
-        setDogs(dogs.filter(dog => dog !== dogToRemove))
+        setDogs(dogs.filter(dog => dog.dogDetails !== dogToRemove))
     }
 
     return (

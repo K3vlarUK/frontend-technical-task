@@ -9,7 +9,7 @@ const Stack = createStackNavigator<NavStackParamList>();
 
 export const NavStack = () => {
     return (
-        <Stack.Navigator initialRouteName='Home' screenOptions={{header: () => <NavBar />}}>
+        <Stack.Navigator initialRouteName='Home' screenOptions={{header: () => <NavBar />, animationEnabled: false}}>
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Gallery' component={Gallery} />
         </Stack.Navigator>

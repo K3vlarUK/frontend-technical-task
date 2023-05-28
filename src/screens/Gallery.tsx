@@ -22,11 +22,21 @@ const Gallery = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Super Cute Doggy Gallery</Text>
-      <Carousel dogData={dogs} onDeleteDogPress={toggleConfirmDelete} />
+    <>
+      <View style={styles.container}>
+        {
+          dogs.length > 0 ? (
+            <>
+              <Text style={styles.header}>Super Cute Doggy Gallery</Text>
+              <Carousel dogData={dogs} onDeleteDogPress={toggleConfirmDelete} />
+            </>
+          ) : (
+            <Text style={styles.emptyGallery}>Nothing Here yet! Go look at some cute dogs on the Home screen.</Text>
+          )
+        }
+      </View>
       <BottomSheet showBottomSheet={showBottomSheet} confirmDelete={confirmDelete} onDismiss={() => setShowBottomSheet(false)} />
-    </View>
+    </>
   )
 
 }
@@ -42,6 +52,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#D3D3D3',
+  },
+  emptyGallery: {
+    width: '90%',
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#D3D3D3',
   }
 })
