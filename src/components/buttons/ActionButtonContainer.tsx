@@ -23,6 +23,11 @@ const ActionButtonContainer: React.FC<ActionButtonContainerProps> = ({newDog, sa
     setDogsName('');
   }
 
+  const getNewDog = () => {
+    setDogsName('');
+    newDog();
+  }
+
   return (
     <View>
       {
@@ -44,7 +49,7 @@ const ActionButtonContainer: React.FC<ActionButtonContainerProps> = ({newDog, sa
         }
         }  
       />
-      <ActionButton title='New Dog' onPress={newDog} />
+      <ActionButton title='New Dog' onPress={getNewDog} />
       <ActionButton title='Save Dog' onPress={saveNewDog} />
     </View>
   )
