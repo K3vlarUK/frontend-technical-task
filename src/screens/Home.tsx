@@ -4,6 +4,7 @@ import ActionButtonContainer from '../components/buttons/ActionButtonContainer'
 import { Dog } from '../context/types'
 import { DogContext } from '../context/DogContext'
 import styled, { css } from '@emotion/native'
+import { ScrollView } from 'react-native-gesture-handler'
 
 interface DogResponse {
   message: string;
@@ -14,6 +15,13 @@ interface DogResponse {
 // I had never used Emotion before so was interested in seeing what it was like
 
 const CustomSafeAreaView = styled.SafeAreaView`
+  justifyContent: space-evenly;
+  alignItems: center;
+  height: 100%;
+  backgroundColor: #5d5d5d;
+`
+
+const View = styled.View`
   justifyContent: space-evenly;
   alignItems: center;
   height: 100%;
@@ -51,12 +59,16 @@ const Home = () => {
 
   return (
     <CustomSafeAreaView>
-      {
-        currentDog.url && (
-          <DogBox url={currentDog.url} dogName={currentDog.name} />
-        )
-      }
-      <ActionButtonContainer newDog={getNewDog} saveDog={saveDog} />
+      <ScrollView>
+        <View> 
+          {
+            currentDog.url && (
+              <DogBox url={currentDog.url} dogName={currentDog.name} />
+            )
+          }
+          <ActionButtonContainer newDog={getNewDog} saveDog={saveDog} />
+        </View> 
+      </ScrollView>
     </CustomSafeAreaView>
   )
 }
