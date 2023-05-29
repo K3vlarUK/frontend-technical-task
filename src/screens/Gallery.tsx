@@ -26,10 +26,7 @@ const Gallery = () => {
       <View style={styles.container}>
         {
           dogs.length > 0 ? (
-            <>
-              <Text style={styles.header}>Super Cute Doggy Gallery</Text>
-              <Carousel dogData={dogs} onDeleteDogPress={toggleConfirmDelete} />
-            </>
+            <Carousel dogData={dogs} onDeleteDogPress={toggleConfirmDelete} />
           ) : (
             <Text style={styles.emptyGallery}>Nothing Here yet! Go look at some cute dogs on the Home screen.</Text>
           )

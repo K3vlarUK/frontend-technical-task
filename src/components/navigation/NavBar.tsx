@@ -6,6 +6,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from '@emotion/native'
 
 const MainContainer = styled.View`
+  flexDirection: row;
+  paddingLeft: 10px;
+  justifyContent: space-between;
   alignItems: center;
   backgroundColor: #D3D3D3;
   height: 125px;
@@ -15,8 +18,8 @@ const MainContainer = styled.View`
 
 const ButtonContainer = styled.View`
   flexDirection: row;
+  paddingLeft: 10px;
   width: 100%;
-  justifyContent: space-evenly;
   paddingTop: 10px;
 `
 
